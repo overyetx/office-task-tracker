@@ -1,0 +1,57 @@
+<Window x:Class="OfficeTaskTracker.ScreenshotOverlay"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        WindowStyle="None"
+        AllowsTransparency="True"
+        Background="Transparent"
+        Topmost="True"
+        WindowState="Maximized"
+        Cursor="Cross"
+        ShowInTaskbar="False"
+        ResizeMode="NoResize">
+    
+    <Canvas x:Name="OverlayCanvas" 
+            Background="#01000000"
+            MouseLeftButtonDown="Canvas_MouseLeftButtonDown"
+            MouseMove="Canvas_MouseMove"
+            MouseLeftButtonUp="Canvas_MouseLeftButtonUp"
+            KeyDown="Window_KeyDown">
+        
+        <!-- Dark overlay -->
+        <Path x:Name="DarkOverlay" Fill="#88000000" IsHitTestVisible="False"/>
+        
+        <!-- Selection rectangle -->
+        <Rectangle x:Name="SelectionRectangle" 
+                   Stroke="#00D4AA" 
+                   StrokeThickness="2" 
+                   StrokeDashArray="4 2"
+                   Fill="#2200D4AA"
+                   Visibility="Collapsed"/>
+
+        <!-- Size indicator -->
+        <Border x:Name="SizeIndicator"
+                Background="#CC1a1a2e"
+                CornerRadius="4"
+                Padding="8,4"
+                Visibility="Collapsed"
+                IsHitTestVisible="False">
+            <TextBlock x:Name="SizeText" 
+                       Foreground="#00D4AA" 
+                       FontSize="12"
+                       FontFamily="Segoe UI"/>
+        </Border>
+
+        <!-- Instruction text -->
+        <Border x:Name="InstructionBorder"
+                Canvas.Left="0" Canvas.Top="0"
+                Background="#CC1a1a2e"
+                CornerRadius="8"
+                Padding="16,10"
+                IsHitTestVisible="False">
+            <TextBlock Text="Drag to select region • ESC to cancel" 
+                       Foreground="#AAAAAA" 
+                       FontSize="14"
+                       FontFamily="Segoe UI"/>
+        </Border>
+    </Canvas>
+</Window>
